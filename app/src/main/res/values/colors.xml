@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey">#C0C0C0</color>
     <color name="kPrimaryColor">#00BF6D</color>
     <color name="kSecondaryColor">#FFFE9901</color>
     <color name="kContentColorLightTheme">#1D1D35</color>

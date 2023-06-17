@@ -6,4 +6,12 @@
     <string name="title_activity_spalsh_screen">SpalshScreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="singin">Sing In</string>
+    <string name="icon_google">Icon google</string>
+    <string name="icon_facebook">Icon Facebook</string>
+    <string name="rememeber">Remember me</string>
+    <string name="forget">Forget Password?</string>
+    <string name="dont_have">Don\'t have account? </string>
 </resources>

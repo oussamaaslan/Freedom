@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="logo_theme" type="drawable">@drawable/logo_dark_theme_notaminated</item>
+</resources>
