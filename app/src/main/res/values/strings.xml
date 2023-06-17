@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Freedom</string>
-    <string name="wlc_to_freedom">Welcome to out freedom messaging app</string>
+    <string name="wlc_to_freedom">Welcome to our freedom messaging app</string>
     <string name="free_talk">Freedom talk any persone of your\n mother language</string>
     <string name="skip">Skip   ></string>
+    <string name="title_activity_spalsh_screen">SpalshScreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

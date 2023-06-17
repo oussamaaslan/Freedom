@@ -6,4 +6,5 @@
         <item name="colorPrimaryDark">@color/kPrimaryColor</item>
         <item name="android:windowBackground">@color/kContentColorLightTheme</item>
     </style>
+
 </resources>
