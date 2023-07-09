@@ -8,11 +8,11 @@
     android:orientation="vertical"
     android:padding="40dp"
     android:layout_centerInParent="true">
-<ImageView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:src="@drawable/logo_theme"
-    />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_theme"
+        />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
+                android:hint="@string/username"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -43,7 +43,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
 
-            android:id="@+id/txtPassword"
+            android:id="@+id/txtEmail"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,42 +52,81 @@
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusTopEnd="16dp"
             app:boxCornerRadiusTopStart="16dp"
-            app:passwordToggleDrawable="@drawable/baseline_remove_red_eye_24"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/grey"
-            app:startIconDrawable="@drawable/baseline_lock_24">
+
+            app:startIconDrawable="@drawable/baseline_alternate_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:imeOptions="actionSend"
-                android:inputType="textPassword" />
+                android:hint="@string/email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtConfirmPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            android:layout_below="@+id/txtPassword"
+            app:startIconDrawable="@drawable/baseline_lock_24">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/confirmationpass"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxCornerRadiusBottomEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusTopStart="16dp"
+            android:layout_below="@id/txtEmail"
+            app:startIconDrawable="@drawable/baseline_lock_24"
+            app:passwordToggleDrawable="@drawable/baseline_remove_red_eye_24"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:imeOptions="actionGo"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_singin"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lin_checkbox"
+            android:layout_below="@+id/txtConfirmPassword"
             android:layout_centerInParent="true"
             android:layout_marginStart="19dp"
             android:layout_marginTop="19dp"
             android:layout_marginEnd="19dp"
             android:layout_marginBottom="19dp"
             android:layout_weight="1"
-            android:text="@string/singin"
+            android:text="@string/singup"
             app:cornerRadius="20dp" />
 
         <LinearLayout
             android:id="@+id/lin_google_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btn_login"
+            android:layout_below="@id/btn_singin"
             android:layout_centerInParent="true"
             android:orientation="horizontal">
 
@@ -101,6 +140,7 @@
                 android:src="@drawable/icon_google" />
 
             <ImageButton
+                android:id="@+id/facebooklogin"
                 style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,29 +150,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/lin_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtPassword">
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:text="@string/rememeber" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/forget" />
-
-        </LinearLayout>
 
         <TableRow
             android:layout_width="match_parent"
@@ -161,6 +178,5 @@
 
 
     </RelativeLayout>
-
 
 </RelativeLayout>

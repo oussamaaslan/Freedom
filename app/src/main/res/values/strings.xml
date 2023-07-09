@@ -14,4 +14,8 @@
     <string name="rememeber">Remember me</string>
     <string name="forget">Forget Password?</string>
     <string name="dont_have">Don\'t have account? </string>
+    <string name="username">Username</string>
+    <string name="confirmationemail">Confirmation Email</string>
+    <string name="singup">Sing Up</string>
+    <string name="confirmationpass">Confirmation Password</string>
 </resources>
