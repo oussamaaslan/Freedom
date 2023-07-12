@@ -22,7 +22,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtUsername"
+            android:id="@+id/txtemail"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtUsername"
+            android:layout_below="@id/txtemail"
             app:boxCornerRadiusBottomEnd="16dp"
             app:boxCornerRadiusBottomStart="16dp"
             app:boxCornerRadiusTopEnd="16dp"
@@ -55,6 +55,7 @@
             app:passwordToggleDrawable="@drawable/baseline_remove_red_eye_24"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/grey"
+            app:errorEnabled="true"
             app:startIconDrawable="@drawable/baseline_lock_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -67,7 +68,18 @@
 
 
         </com.google.android.material.textfield.TextInputLayout>
-
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="19dp"
+            android:layout_below="@+id/lin_checkbox"
+            android:visibility="invisible"/>
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
             style="@style/Widget.MaterialComponents.Button.TextButton"
@@ -79,7 +91,7 @@
             android:layout_marginTop="19dp"
             android:layout_marginEnd="19dp"
             android:layout_marginBottom="19dp"
-            android:layout_weight="1"
+
             android:text="@string/singin"
             app:cornerRadius="20dp" />
 

@@ -4,7 +4,9 @@ package com.example.freedom.tools;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +19,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.ktx.Firebase;
+
+import java.lang.reflect.Executable;
+import java.util.function.Function;
 
 public class Connection   {
 
@@ -49,24 +54,27 @@ public class Connection   {
             return false;
     }
 
-    public void createUser(String email,String password,Context context){
+    public void createUser(String email, String password, Context context, Runnable runnableEndLogin) {
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("LOG", "create User:success");
-                            user = mAuth.getCurrentUser();
+                            loginRefresh(context);
                             // updateUI(user);
                             Intent intent=new Intent(context, HomeActivity.class);
-
+                            runnableEndLogin.run();
                             context.startActivity(intent);
                             ((Activity) context).finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(context, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                            runnableEndLogin.run();
                             Log.w("LOG", "signInWithEmail:failure", task.getException());
 
                             //updateUI(null);
@@ -74,7 +82,8 @@ public class Connection   {
                     }
                 });
     }
-    public void login(String email,String password,Context context){
+
+    public void login(String email,String password,Context context, Runnable runnableEndLogin){
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -82,16 +91,17 @@ public class Connection   {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("LOG", "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            loginRefresh(context);
                            // updateUI(user);
                             Intent intent=new Intent(context, HomeActivity.class);
-
+                            runnableEndLogin.run();
                             context.startActivity(intent);
                             ((Activity) context).finish();
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(context, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
+                            runnableEndLogin.run();
                             Log.w("LOG", "signInWithEmail:failure", task.getException());
 
                             //updateUI(null);
@@ -101,6 +111,30 @@ public class Connection   {
     }
 
     public FirebaseUser getUser(){
-        return user;
+        return mAuth.getCurrentUser();
     }
+
+    public  boolean tokenCheck(Context context){
+        boolean ischeck=false;
+        String token=context.getSharedPreferences("application", Context.MODE_PRIVATE).getString("tokenId",null);
+        if(token!=null){
+            ischeck=true;
+        }
+        return ischeck;
+    }
+   public void loginRefresh(Context context) {
+
+      SharedPreferences sharedPref = context.getSharedPreferences("application", Context.MODE_PRIVATE);
+      if(sharedPref.getString("tokenId",null)!=null){
+          String token=getUser().getIdToken(true).getResult().getToken();
+        sharedPref.edit().putString("tokenId",token).apply();
+
+
+      }
+      else if(getUser()!=null) {
+          String token=getUser().getIdToken(false).getResult().getToken();
+          sharedPref.edit().putString("tokenId",token).apply();
+      }
+
+   }
 }
