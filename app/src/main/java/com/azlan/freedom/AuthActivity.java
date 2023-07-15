@@ -13,7 +13,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CancellationSignal;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -22,7 +21,6 @@ import android.widget.Toast;
 
 import com.azlan.freedom.databinding.ActivityLoginBinding;
 import com.azlan.freedom.models.User;
-import com.azlan.freedom.tools.UserValidator;
 import com.azlan.freedom.tools.Utility;
 import com.azlan.freedom.viewmodels.AuthViewModel;
 import com.facebook.CallbackManager;
@@ -40,15 +38,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.dialog.MaterialDialogs;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
-import java.util.Objects;
-import java.util.function.Consumer;
 
 public class AuthActivity extends AppCompatActivity implements LoginFragment.Listener,registrationFragment.Listener{
     private ActivityLoginBinding binding;

@@ -1,4 +1,4 @@
-package com.azlan.freedom.models;
+package layout.models;
 
 import com.google.firebase.database.Exclude;
 
@@ -24,7 +24,7 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(String uid, String name, String email,String provider) {
+   public User(String uid, String name, String email,String provider) {
         this.uid = uid;
         this.name = name;
         this.email = email;

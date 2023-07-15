@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 
+import com.azlan.freedom.Services.InternetCheckService;
 import com.azlan.freedom.tools.Animated;
 import com.azlan.freedom.databinding.ActivityMainBinding;
 import com.azlan.freedom.tools.Utility;
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
         ////inslall Splash Screen here
         SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
+        // Start the InternetCheckService
+        Intent serviceIntent = new Intent(this, InternetCheckService.class);
+        startService(serviceIntent);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         sharedPref = getSharedPreferences("application", Context.MODE_PRIVATE);
 

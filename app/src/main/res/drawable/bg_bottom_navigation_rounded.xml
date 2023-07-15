@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background with rounded corners at the top -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+            <corners android:topLeftRadius="16dp"
+                android:topRightRadius="16dp" />
+            <stroke android:color="@color/grey"/>
+
+        </shape>
+    </item>
+
+    <!-- Shadow for elevation effect -->
+    <item
+        android:top="1dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:bottom="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#22000000" />
+            <corners android:topLeftRadius="16dp"
+                android:topRightRadius="16dp" />
+        </shape>
+    </item>
+    <!-- Draw your BottomNavigationView's background here, if needed -->
+    <item
+        android:id="@android:id/background"
+        android:drawable="?android:windowBackground" />
+
+</layer-list>

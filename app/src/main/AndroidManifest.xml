@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Freedom"
         tools:targetApi="31">
-
+        <service android:name=".Services.InternetCheckService" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

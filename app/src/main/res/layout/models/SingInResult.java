@@ -1,6 +1,4 @@
-package com.azlan.freedom.models;
-
-
+package layout.models;
 
 import androidx.annotation.Nullable;
 
@@ -19,11 +17,11 @@ public class SingInResult {
     }
 
     @Nullable
-    public User getSuccess() {
+   public User getSuccess() {
         return success;
     }
     @Nullable
-    public String getErrorMessage() {
+   public String getErrorMessage() {
         return errorMessage;
     }
 }
