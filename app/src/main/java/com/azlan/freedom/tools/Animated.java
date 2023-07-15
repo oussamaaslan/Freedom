@@ -1,4 +1,4 @@
-package com.example.freedom.tools;
+package com.azlan.freedom.tools;
 
 import android.animation.ObjectAnimator;
 import android.view.View;

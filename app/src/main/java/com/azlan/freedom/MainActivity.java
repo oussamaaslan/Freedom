@@ -1,4 +1,4 @@
-package com.example.freedom;
+package com.azlan.freedom;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,9 +8,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.splashscreen.SplashScreen;
 
-import com.example.freedom.databinding.ActivityMainBinding;
-import com.example.freedom.tools.Animated;
-import com.example.freedom.tools.Connection;
+import com.azlan.freedom.tools.Animated;
+import com.azlan.freedom.databinding.ActivityMainBinding;
+import com.azlan.freedom.tools.Utility;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
@@ -24,29 +24,30 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         sharedPref = getSharedPreferences("application", Context.MODE_PRIVATE);
 
-        if (!sharedPref.getBoolean("First_Use", false)&&!Connection.getInstance().tokenCheck(this)) {
+        if (!sharedPref.getBoolean("First_Use", false)&&!Utility.tokenCheck(this)) {
+            setContentView(binding.getRoot());
             Animated.fadeInAnimator(binding.imageView);
             Animated.fadeInAnimator(binding.tvWelcome);
             Animated.fadeInAnimator(binding.tvfree);
             Animated.fadeInAnimator(binding.txskip);
-            setContentView(binding.getRoot());
+
 
             binding.txskip.setOnClickListener(v -> {
 
                 sharedPref.edit().putBoolean("First_Use", true).apply();
                 Intent intent = new Intent(this,
-                        LoginActivity.class);
+                        AuthActivity.class);
                 startActivity(intent);
                 finish();
             });
         }
-        else if(sharedPref.getBoolean("First_Use", false)&&Connection.getInstance().tokenCheck(this)){
+        else if(sharedPref.getBoolean("First_Use", false)&& Utility.tokenCheck(this)){
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
             finish();
         }
         else {
-            Intent intent = new Intent(this, LoginActivity.class);
+            Intent intent = new Intent(this, AuthActivity.class);
             startActivity(intent);
             finish();
         }
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 }
 
 
-// if (!Connection.getInstance().tokenCheck(this)) {
+// if (!Utility.getInstance().tokenCheck(this)) {
 //         binding.txskip.setOnClickListener(v -> {
 //         Animated.fadeInAnimator(binding.imageView);
 //         Animated.fadeInAnimator(binding.tvWelcome);
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 //         editor.putBoolean("First_Use", true);
 //         editor.apply();
 //         Intent intent = new Intent(this,
-//         LoginActivity.class);
+//         AuthActivity.class);
 //        startActivity(intent);
 //        finish();
 //        });

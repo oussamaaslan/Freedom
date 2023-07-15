@@ -1,4 +1,4 @@
-package com.example.freedom;
+package com.azlan.freedom;
 
 import org.junit.Test;
 

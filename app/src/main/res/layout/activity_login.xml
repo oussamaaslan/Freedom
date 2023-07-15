@@ -4,107 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".AuthActivity"
     android:orientation="vertical"
     android:padding="40dp"
     android:layout_centerInParent="true">
 <ImageView
+    android:id="@+id/logo"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:src="@drawable/logo_theme"
     />
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/logo"
+    android:layout_centerInParent="true">
+    <fragment
+        android:id="@+id/nav_host_fragment_activity_auth"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:defaultNavHost="true"
 
+        app:navGraph="@navigation/auth_navigation" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_below="@id/nav_host_fragment_activity_auth"
         android:orientation="vertical">
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txtemail"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxCornerRadiusBottomEnd="16dp"
-            app:boxCornerRadiusBottomStart="16dp"
-            app:boxCornerRadiusTopEnd="16dp"
-            app:boxCornerRadiusTopStart="16dp"
-            app:startIconDrawable="@drawable/baseline_account_circle_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-
-            android:id="@+id/txtPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtemail"
-            app:boxCornerRadiusBottomEnd="16dp"
-            app:boxCornerRadiusBottomStart="16dp"
-            app:boxCornerRadiusTopEnd="16dp"
-            app:boxCornerRadiusTopStart="16dp"
-            app:passwordToggleDrawable="@drawable/baseline_remove_red_eye_24"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/grey"
-            app:errorEnabled="true"
-            app:startIconDrawable="@drawable/baseline_lock_24">
-
-            <com.google.android.material.textfield.TextInputEditText
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:imeOptions="actionSend"
-                android:inputType="textPassword" />
-
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/progress_circular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="19dp"
-            android:layout_below="@+id/lin_checkbox"
-            android:visibility="invisible"/>
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_login"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lin_checkbox"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="19dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="19dp"
-            android:layout_marginBottom="19dp"
-
-            android:text="@string/singin"
-            app:cornerRadius="20dp" />
-
         <LinearLayout
             android:id="@+id/lin_google_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/btn_login"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/btngoogle"
                 style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,6 +50,7 @@
                 android:src="@drawable/icon_google" />
 
             <ImageButton
+                android:id="@+id/btnfacebook"
                 style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -122,29 +60,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/lin_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtPassword">
-
-            <CheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:text="@string/rememeber" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:text="@string/forget" />
-
-        </LinearLayout>
 
         <TableRow
             android:layout_width="match_parent"
@@ -158,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-
+                style="@style/TextAppearance.AppCompat.Medium"
                 android:text="@string/dont_have" />
 
             <TextView
@@ -168,11 +83,12 @@
                 android:layout_marginStart="2dp"
                 android:layout_weight="1"
                 android:text="@string/singin"
+                style="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/kPrimaryColor" />
         </TableRow>
 
 
     </RelativeLayout>
 
-
+</RelativeLayout>
 </RelativeLayout>

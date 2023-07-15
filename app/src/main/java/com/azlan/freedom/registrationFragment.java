@@ -1,58 +1,78 @@
-package com.example.freedom;
+package com.azlan.freedom;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.freedom.databinding.ActivitySingInBinding;
-import com.example.freedom.tools.Connection;
-import com.example.freedom.tools.UserValidator;
+import com.azlan.freedom.databinding.FragmentLoginBinding;
+import com.azlan.freedom.databinding.FragmentRegistrationBinding;
+import com.azlan.freedom.tools.UserValidator;
 
 import java.util.Objects;
 
-public class SingInActivity extends AppCompatActivity {
-private ActivitySingInBinding binding;
+
+public class registrationFragment extends Fragment {
+    private registrationFragment.Listener listener;
+    private FragmentRegistrationBinding binding;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof LoginFragment.Listener) {
+            listener = (registrationFragment.Listener) context;
+        } else {
+            throw new ClassCastException(context.toString() + " You need to implement MyFragment.Listener");
+        }
+    }
+
+    public interface Listener {
+        void onSomethingHappened(String username,String email,String password);
+    }
+
+    public registrationFragment() {
+        // Required empty public constructor
+    }
+
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding=ActivitySingInBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        overridePendingTransition(R.anim.anim_slide_in_left,R.anim.anim_slide_out_left );
-        binding.txtsingin.setOnClickListener(v -> {
-            Intent intent=new Intent(this,LoginActivity.class);
-            startActivity(intent);
-            finish();
-        });
-        Runnable  runnableStartLogin = new Runnable() {
-            public void run() {
-                binding.progressCircular.setVisibility(View.VISIBLE);
-                binding.btnSingin.setVisibility(View.INVISIBLE);
-            }
-        };
-        Runnable  runnableEndLogin = new Runnable() {
-            public void run() {
-                binding.progressCircular.setVisibility(View.INVISIBLE);
-                binding.btnSingin.setVisibility(View.VISIBLE);
-            }
-        };
-        binding.btnSingin.setOnClickListener(v -> {
-            if( !checkvalidation("All")){
-                runnableStartLogin.run();
-                String username=binding.txtUsername.getEditText().getText().toString();
-                String email=binding.txtEmail.getEditText().getText().toString();
-                String password=binding.txtPassword.getEditText().getText().toString();
-                String passwordConfirm=binding.txtConfirmPassword.getEditText().getText().toString();
-                Connection.getInstance().createUser(email,password,this,runnableEndLogin);
-                Toast.makeText(this,"login successfully",Toast.LENGTH_SHORT).show();
-            }
-            else
-                runnableEndLogin.run();
-        });
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentRegistrationBinding.inflate(inflater, container, false);
+
+        // Inflate the layout for this fragment
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.btnSingin.setOnClickListener(v -> {
+            String username=binding.txtUsername.getEditText().getText().toString();
+            String email=binding.txtEmail.getEditText().getText().toString();
+            String password=binding.txtPassword.getEditText().getText().toString();
+            if(!checkvalidation("Both")){
+                listener.onSomethingHappened(username,email,password);
+            }
+            else Toast.makeText(getContext(), "Invalid Credential Format.", Toast.LENGTH_SHORT).show();
+
+
+        });
 
         binding.txtUsername.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -86,7 +106,6 @@ private ActivitySingInBinding binding;
             }
         });
     }
-
 
     private boolean checkvalidation(String checked){
         boolean isvalidate=false;
@@ -124,7 +143,7 @@ private ActivitySingInBinding binding;
                 binding.txtConfirmPassword.setError( passwordConfirmValidationResult.getErrorMessage());
                 isvalidate=true;
             }
-            else binding.txtPassword.setError(null);
+            else binding.txtConfirmPassword.setError(null);
         }
 
         return isvalidate;

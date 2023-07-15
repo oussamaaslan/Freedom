@@ -9,5 +9,13 @@
     </style>
 
 
+    <style name="CustomAlertDialogStyle" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowMinWidthMajor">@dimen/alert_dialog_width</item>
+        <item name="android:windowMinWidthMinor">@dimen/alert_dialog_width</item>
+        <item name="android:windowAnimationStyle">@style/AlertDialogAnimation</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
 
 </resources>

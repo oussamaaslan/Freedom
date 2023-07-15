@@ -1,4 +1,4 @@
-package com.example.freedom.tools;
+package com.azlan.freedom.tools;
 
 public class UserValidator {
     public static ValidationResult validateUsername(String username) {

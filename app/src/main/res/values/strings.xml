@@ -18,4 +18,13 @@
     <string name="confirmationemail">Confirmation Email</string>
     <string name="singup">Sing Up</string>
     <string name="confirmationpass">Confirmation Password</string>
+    <string name="default_web_client_id">949718303158-5uk9tpg5f7g24ggenkohlpjk74nscn9b.apps.googleusercontent.com</string>
+
+    <string name="facebook_app_id">274049845226180</string>
+    <string name="fb_login_protocol_scheme">fb804765631376311</string>
+    <string name="facebook_client_token">8e0dce745c2619a35ec4504f5354432b</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_registration">Registration</string>
+    <string name="authntificate">Authenficate...</string>
 </resources>

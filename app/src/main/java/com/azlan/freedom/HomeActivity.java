@@ -1,11 +1,10 @@
-package com.example.freedom;
+package com.azlan.freedom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.freedom.databinding.ActivityHomeBinding;
-import com.example.freedom.tools.Connection;
+import com.azlan.freedom.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -16,7 +15,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-            binding.txtuser.setText(Connection.getInstance().getUser().getIdToken(false).getResult().getToken());
+
 
 
     }
