@@ -2,16 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/baseline_home_24"
+        android:icon="@drawable/home_circle"
         android:title="@string/title_home" />
 
     <item
         android:id="@+id/navigation_chat"
-        android:icon="@drawable/baseline_chat_24"
+        android:icon="@drawable/chat"
         android:title="@string/title_chat" />
+    <item
+        android:id="@+id/navigation_add"
+        android:icon="@drawable/plus_box"
+        android:title="@string/title_add" />
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/bell"
+        android:title="@string/title_notifications" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/baseline_manage_accounts_24"
+        android:icon="@drawable/account"
         android:title="@string/title_profile" />
 </menu>

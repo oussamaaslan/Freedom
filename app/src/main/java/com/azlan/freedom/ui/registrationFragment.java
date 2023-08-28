@@ -1,4 +1,4 @@
-package com.azlan.freedom;
+package com.azlan.freedom.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.azlan.freedom.databinding.FragmentLoginBinding;
 import com.azlan.freedom.databinding.FragmentRegistrationBinding;
 import com.azlan.freedom.tools.UserValidator;
 

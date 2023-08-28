@@ -6,6 +6,7 @@
     <color name="kPrimaryColor">#00BF6D</color>
     <color name="kSecondaryColor">#FFFE9901</color>
     <color name="kContentColorLightTheme">#1D1D35</color>
+    <color name="kContentColordarker">#2C2C4E</color>
     <color name="kContentColorDarkTheme">#F5FCF9</color>
     <color name="kWarninngColor">#FFF3BB1C</color>
     <color name="kErrorColor">#FFF03738</color>

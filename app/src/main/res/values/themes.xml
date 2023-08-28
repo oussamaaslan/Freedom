@@ -6,9 +6,18 @@
         <item name="colorAccent">@color/kContentColorLightTheme</item>
         <item name="colorPrimaryDark">@color/kPrimaryColor</item>
         <item name="android:windowBackground">@color/kContentColorDarkTheme</item>
+        <item name="android:navigationBarColor">@color/kContentColorDarkTheme</item>
     </style>
 
     <style name="Theme.Freedom" parent="Base.Theme.Freedom" />
+    <style name="Theme.Freedom.HomeActivity" parent="Theme.MaterialComponents.Light.DarkActionBar" >
+        !-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/kPrimaryColor</item>
+        <item name="colorAccent">@color/kContentColorLightTheme</item>
+        <item name="colorPrimaryDark">@color/kPrimaryColor</item>
+        <item name="android:windowBackground">@color/kContentColorDarkTheme</item>
+        <item name="android:navigationBarColor">@color/kContentColorDarkTheme</item>
+    </style>
 
     <style name="CustomAlertDialogStyle" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -24,5 +33,13 @@
         <item name="android:windowExitAnimation">@anim/dialog_fade_out</item>
     </style>
 
-
+    <style name="customIcon"  >
+        !-- Customize your light theme here. -->
+        <item name="tint">@android:color/darker_gray</item>
+    </style>
+    <style name="CustomCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/white</item> <!-- Set background color to transparent -->
+    </style>
+    <style name="PopupWindow" parent="Base.Theme.Freedom">
+    </style>
 </resources>

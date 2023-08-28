@@ -10,6 +10,7 @@ import com.azlan.freedom.models.SingInResult;
 import com.azlan.freedom.models.User;
 import com.azlan.freedom.repository.AuthRepository;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class AuthViewModel extends AndroidViewModel {
@@ -18,6 +19,9 @@ public class AuthViewModel extends AndroidViewModel {
         public MutableLiveData<User> createdUserLiveData = new MutableLiveData<>();
 
         public MutableLiveData<FirebaseUser> firebaseUserLiveData=new MutableLiveData<>();
+    public MutableLiveData<FirebaseAuth> firebaseAuthLiveData=new MutableLiveData<>();
+    public MutableLiveData<String> firebaseTokenLiveData=new MutableLiveData<>();;
+    private MutableLiveData<String>  firebaseUserUid=new MutableLiveData<>();
 
 
     public AuthViewModel(@NonNull Application application) {
@@ -46,6 +50,16 @@ public class AuthViewModel extends AndroidViewModel {
 
         public void getFirbaseUser(){
             firebaseUserLiveData=authRepository.firebaseUser();
+        }
+
+        public void getFirbaseauth(){
+            firebaseAuthLiveData=authRepository.firebaseAuth();
+        }
+        public void getFirbaseToken(){
+            firebaseTokenLiveData=authRepository.firebaseToken();
+        }
+        public void getFirbaseUserUid(){
+            firebaseUserUid=authRepository.firebaseUserUid();
         }
 }
 

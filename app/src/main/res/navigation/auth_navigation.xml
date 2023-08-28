@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_login"
-        android:name="com.azlan.freedom.LoginFragment"
+        android:name="com.azlan.freedom.ui.LoginFragment"
         android:label="@string/title_registration"
         tools:layout="@layout/fragment_login" >
         <action
@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_registration"
-        android:name="com.azlan.freedom.registrationFragment"
+        android:name="com.azlan.freedom.ui.registrationFragment"
         android:label="@string/title_registration"
         tools:layout="@layout/fragment_login" >
         <action

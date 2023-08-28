@@ -1,4 +1,4 @@
-package com.azlan.freedom;
+package com.azlan.freedom.ui;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -7,6 +7,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     public String uid;
     public String name;
+    public String photoUrl;
     @SuppressWarnings("WeakerAccess")
     public String email;
     @Exclude
@@ -24,10 +25,11 @@ public class User implements Serializable {
 
     public User() {}
 
-    public User(String uid, String name, String email,String provider) {
+    public User(String uid, String name, String email,String provider,String photoUrl) {
         this.uid = uid;
         this.name = name;
         this.email = email;
         this.provider=provider;
+        this.photoUrl=photoUrl;
     }
 }

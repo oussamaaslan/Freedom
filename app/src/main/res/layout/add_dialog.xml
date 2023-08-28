@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.fragments.AddDialog"
+    style="@style/Theme.Freedom"
+  >
+
+<RelativeLayout
+    android:id="@+id/items"
+    android:background="@drawable/poupwindow"
+    android:paddingTop="15dp"
+    android:paddingBottom="20dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/uploadtextview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/upload"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="italic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/uploadtextview"
+        android:layout_centerInParent="true"
+        android:gravity="center">
+
+      <androidx.cardview.widget.CardView
+          android:id="@+id/addphoto_cardview"
+          style="@style/CustomCardView"
+          android:layout_width="70dp"
+          android:layout_height="70dp"
+          android:layout_marginRight="40dp"
+          app:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+          <ImageView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:layout_gravity="center"
+              android:src="@drawable/add_post" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:text="@string/photo"
+              android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+          android:id="@+id/addstatus_cardview"
+          style="@style/CustomCardView"
+          android:layout_width="70dp"
+          android:layout_height="70dp"
+          android:layout_toEndOf="@id/addphoto_cardview"
+          app:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+          <ImageView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:layout_gravity="center"
+              android:src="@drawable/add_status" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:text="@string/title_status"
+              android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+
+      <androidx.cardview.widget.CardView
+          android:id="@+id/addvideo_cardview"
+          style="@style/CustomCardView"
+          android:layout_width="70dp"
+          android:layout_height="70dp"
+          android:layout_marginLeft="40dp"
+          android:layout_toEndOf="@id/addstatus_cardview"
+          app:cardCornerRadius="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+          <ImageView
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:layout_gravity="center"
+              android:src="@drawable/add_video" />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:text="@string/title_video"
+              android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+        </LinearLayout>
+
+      </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</RelativeLayout>
+
+</RelativeLayout>

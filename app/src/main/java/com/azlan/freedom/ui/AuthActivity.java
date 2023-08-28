@@ -1,4 +1,4 @@
-package com.azlan.freedom;
+package com.azlan.freedom.ui;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.IntentSenderRequest;
@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.azlan.freedom.R;
 import com.azlan.freedom.databinding.ActivityLoginBinding;
 import com.azlan.freedom.models.User;
 import com.azlan.freedom.tools.Utility;
@@ -69,14 +70,14 @@ public class AuthActivity extends AppCompatActivity implements LoginFragment.Lis
 
 
         binding.txtsingin.setOnClickListener(v ->{
-            if(((TextView) v).getText().toString().equals(getString(R.string.singin))){
+            if((binding.txtsingin.getText().toString().equals(getString(R.string.singup)))){
 
                 navController.navigate(R.id.action_call_registration);
-                ( (TextView) v ).setText(R.string.singup);
+                binding.txtsingin.setText(R.string.singin);
             }
             else{
                 navController.navigateUp();
-                ( (TextView) v ).setText(R.string.singin);
+                binding.txtsingin.setText(R.string.singup);
             }
 
 
@@ -273,7 +274,7 @@ public class AuthActivity extends AppCompatActivity implements LoginFragment.Lis
         authViewModel.firebaseUserLiveData.observe(this,firebaseUser -> {
             try {
                 if(firebaseUser!=null)
-                    Utility.loginRefresh(this,firebaseUser);
+                    Utility.loginRefresh(this,firebaseUser.getIdToken(false).getResult().getToken());
                 if(Utility.tokenCheck(this)){
                     if(user.isNew){
                         String welcome = "Welcome! " + user.name;
@@ -283,6 +284,7 @@ public class AuthActivity extends AppCompatActivity implements LoginFragment.Lis
                         String welcome = "Welcome Back! " + user.name;
                         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
                     }
+                    // Start the InternetCheckService
 
                     Intent ient=new Intent(this,HomeActivity.class);
                     startActivity(ient);
